@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Class Schedules</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h2>Your schedule</h2>
+            <h:dataTable rows="#{login.account.classSchedule.size()}"
+                         value="#{login.account.classSchedule}" var="obj"
+                         border="2" cellpadding="5" cellspacing="1">
+                <h:column>
+                    <f:facet name="header">Course title</f:facet>
+                    <h:commandLink value="#{obj.courseId}" action="#{login.account.selectCourse(obj.course)}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Time</f:facet>
+                        #{obj.time}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Classroom</f:facet>
+                        #{obj.classroom}
+                </h:column>
+                <c:if test="#{login.account.type == 'student'}">
+                    <h:column>
+                        <h:commandButton value="Drop" action="#{login.account.dropCourse(obj.courseId)}"/>
+                    </h:column>
+                </c:if>
+
+                <c:if test="#{login.account.type == 'faculty'}">
+                    <h:column>
+                        <f:facet name="header">Students</f:facet>
+                        <h:dataTable value="#{login.account.getStudents(obj.courseId)}" var="student">
+                            <h:column>
+                                #{student}
+                            </h:column>
+                        </h:dataTable>
+                    </h:column>
+                </c:if>
+            </h:dataTable>
+            <br/><br/>
+            <h:commandButton value="Return" action="main.xhtml"/>
+        </h:form>
+    </h:body>
+</html>
+

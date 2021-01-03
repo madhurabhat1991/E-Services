@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Main page</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h2>Welcome #{login.account.loginId}!</h2>
+            <p>This is a #{login.account.type}'s account</p>
+
+            <c:choose>
+                <c:when test="#{login.type == 'student'}">
+                    <h:commandButton value="View all available courses" action="allCourses.xhtml"/><br/><br/>
+                    <h:commandButton value="Search" action="searchCourse.xhtml"/><br/><br/>
+                    <h:commandButton value="Show Class Schedule" action="classSchedule.xhtml"/><br/><br/>
+                    <h:commandButton value="View Bill" action="viewBill.xhtml"/><br/><br/>
+                </c:when>
+                <c:when test="#{login.type == 'faculty'}">
+                    <h:commandButton value="Show Class Schedule" action="classSchedule.xhtml"/><br/><br/>
+                </c:when>
+            </c:choose>
+
+            <br/><br/>
+            <h:commandButton value="Sign Out" action="#{login.account.signOut()}"/>
+        </h:form>
+    </h:body>
+</html>
+

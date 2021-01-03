@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Login</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h2>Login to your E-services account</h2>
+
+            <p>Please enter your login ID:<br></br>
+                <h:inputText id="login_id" required ="true" 
+                             requiredMessage="The ID field cannot be empty"
+                             title="Please enter your Account ID"
+                             value="#{login.loginId}"
+                             validatorMessage="The ID must be between 3 and 20 characters">
+                    <f:validateLength maximum="20" minimum="3" />
+                </h:inputText>
+            </p>
+
+            <p>Please enter your password:<br></br>
+                <h:inputSecret id="password" required ="true" 
+                               requiredMessage="The password field cannot be empty"
+                               title="Please enter your password"
+                               value="#{login.password}"/>
+            </p>
+
+            <p>
+                <h:commandButton id="submit" value="Submit"
+                                 action="#{login.login()}" />
+            </p>
+        </h:form>
+    </h:body>
+</html>
+
