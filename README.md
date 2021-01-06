@@ -1,2 +1,2 @@
 # E-Services
- Java Full stack project - HTML, CSS, BootStrap, Java Server Faces, GlassFish Server, Java, MySQL, NetBeans
+ Java Full stack project - HTML, CSS, Bootstrap, Java Server Faces, GlassFish Server, Java, MySQL, NetBeans
